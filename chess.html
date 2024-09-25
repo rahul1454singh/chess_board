@@ -1,0 +1,76 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Chess Board</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            width: 90vw; 
+            max-width: 600px; 
+            aspect-ratio: 1; 
+            font-size: calc(3vw + 5px); 
+            font-family: monospace;
+            gap: 0;
+        }
+
+        .square {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .white {
+            background-color: white;
+        }
+
+        .black {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="chessboard"></div>
+
+    <script>
+        function createChessboard(rows, cols) {
+            const chessboardDiv = document.getElementById('chessboard');
+            
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    const square = document.createElement('div');
+                    square.classList.add('square');
+
+                    if ((i + j) % 2 === 0) {
+                        square.textContent = '*';
+                        square.classList.add('white');
+                    } else {
+                        square.textContent = '#';
+                        square.classList.add('black');
+                    }
+
+                    chessboardDiv.appendChild(square);
+                }
+            }
+        }
+
+        const rows = 8;
+        const cols = 8;
+        createChessboard(rows, cols);
+    </script>
+</body>
+</html>
+
